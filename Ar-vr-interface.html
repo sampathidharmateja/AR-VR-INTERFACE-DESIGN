@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AR/VR Interface Demo</title>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+  </head>
+  <body>
+    <a-scene xrweb="allowedDevices: any">
+      <!-- World-locked menu panel -->
+      <a-entity id="menu-panel" geometry="primitive: plane; width: 1; height: 0.6"
+                material="color: #222; opacity: 0.8"
+                position="0 1.5 -2">
+        <!-- Button 1 -->
+        <a-entity geometry="primitive: plane; width: 0.4; height: 0.15"
+                  material="color: #4CC3D9"
+                  position="-0.3 0.15 0.01"
+                  event-set__enter="_event: mouseenter; material.color: #6CE;"
+                  event-set__leave="_event: mouseleave; material.color: #4CC3D9"
+                  text="value: Button A; align: center; color: #FFF;">
+        </a-entity>
+        <!-- Button 2 -->
+        <a-entity geometry="primitive: plane; width: 0.4; height: 0.15"
+                  material="color: #EF2D5E"
+                  position="0.3 0.15 0.01"
+                  event-set__enter="_event: mouseenter; material.color: #F38;"
+                  event-set__leave="_event: mouseleave; material.color: #EF2D5E"
+                  text="value: Button B; align: center; color: #FFF;">
+        </a-entity>
+      </a-entity>
+      <!-- Reticle for gaze interaction -->
+      <a-entity cursor="rayOrigin: mouse" raycaster="objects: .clickable"></a-entity>
+      <a-camera position="0 1.6 0"></a-camera>
+    </a-scene>
+  </body>
+</html>
